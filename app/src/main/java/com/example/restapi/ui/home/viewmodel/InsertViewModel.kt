@@ -1,9 +1,17 @@
 package com.example.restapi.ui.home.viewmodel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.example.restapi.model.Kontak
 import com.example.restapi.repositori.KontakRepository
 
 class InsertViewModel(private val kontakRepository: KontakRepository) : viewModel(){
+    var insertKontakState by mutableStateOf(InsertUiState())
+        private set
+    fun updateInsertKontakState(insertUiEvent: InsertUiEvent){
+        insertKontakState = InsertUiState(insertUiEvent = insertUiEvent)
+    }
 
 }
 
