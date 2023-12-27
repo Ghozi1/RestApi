@@ -6,11 +6,16 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.restapi.KontakAplication
 import com.example.restapi.ui.home.viewmodel.HomeViewModel
+import com.example.restapi.ui.home.viewmodel.InsertViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
             HomeViewModel(aplikasiMars().container.kontakRepository)
+        }
+
+        initializer {
+            InsertViewModel(aplikasiMars().container.kontakRepository)
         }
     }
 }
