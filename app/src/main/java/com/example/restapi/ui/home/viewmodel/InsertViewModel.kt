@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.example.restapi.model.Kontak
 import com.example.restapi.repositori.KontakRepository
+import java.io.IOException
 
 class InsertViewModel(private val kontakRepository: KontakRepository) : viewModel(){
     var insertKontakState by mutableStateOf(InsertUiState())
@@ -12,7 +13,15 @@ class InsertViewModel(private val kontakRepository: KontakRepository) : viewMode
     fun updateInsertKontakState(insertUiEvent: InsertUiEvent){
         insertKontakState = InsertUiState(insertUiEvent = insertUiEvent)
     }
-
+    suspend fun insertKontak(){
+        viewModelScope.launch{
+            try {
+                kontakRepository.insertKontak(insertKontakState.insertUiEvent.toKontak())
+            }catch (e: IOException){
+                e.printStackTrace()
+            }
+        }
+    }
 }
 
 data class InsertUiEvent(
