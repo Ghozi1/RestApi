@@ -6,8 +6,11 @@ import androidx.compose.runtime.setValue
 import com.example.restapi.model.Kontak
 import com.example.restapi.repositori.KontakRepository
 import java.io.IOException
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class InsertViewModel(private val kontakRepository: KontakRepository) : viewModel(){
+class InsertViewModel(private val kontakRepository: KontakRepository) : ViewModel(){
     var insertKontakState by mutableStateOf(InsertUiState())
         private set
     fun updateInsertKontakState(insertUiEvent: InsertUiEvent){
