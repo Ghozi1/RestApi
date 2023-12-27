@@ -25,11 +25,20 @@ fun FormInputSiswa(
     ){
         OutlinedTextField(
             value = insertUiEvent.nama,
-            onValueChange = {onValueChange(insertUiEvent.copy(nama = it)) },
+            onValueChange ={onValueChange(insertUiEvent.copy(nama = it))},
             label = { Text("Nama") },
-            modifier = modifier.fillMaxWidth(),
-            enable = enable,
-            singleline = true
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enable,
+            singleLine = true,
         )
+        OutlinedTextField(
+            value = insertUiEvent.alamat,
+            onValueChange ={onValueChange(insertUiEvent.copy(alamat = it))},
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enable,
+            singleLine = true,
+        )
+
     }
 }
