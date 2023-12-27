@@ -39,8 +39,7 @@ fun HomeScreen (
 ){
     when(kontakUIState){
         is KontakUIState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
-        is KontakUIState.Success -> KontakLayout(kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth()
-        )
+        is KontakUIState.Success -> KontakLayout(kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth())
         is KontakUIState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
     }
 }
@@ -87,7 +86,11 @@ fun KontakLayout(
         items(kontak){kontak ->
             KontakCard(kontak = kontak, modifier = Modifier
                 .fillMaxWidth()
-                .clickable { })
+                .clickable { onDetailClick (kontak)},
+                onDeleteClick = {
+                    onDeleteClick(kontak)
+                }
+            )
         }
     }
 }
